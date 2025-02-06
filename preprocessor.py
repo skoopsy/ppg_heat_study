@@ -2,7 +2,12 @@ import pandas as pd
 import numpy as np
 
 def merge_data(data: dict, category: str) -> dict:
-    """ Merge accelerometer, PPG, HR, and gyro data on sensor clock timestamps. """
+    """
+    Merge accelerometer, PPG, HR, and gyro data on sensor clock timestamps.
+    
+    Returns:
+        dict( subject_id{ condition{ pd.DataFrame}})
+    """
     if category not in data:
         print(f"Warning: Category '{category}' is missing.")
         return pd.DataFrame()
