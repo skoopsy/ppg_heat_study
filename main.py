@@ -10,12 +10,13 @@ def main():
 
     checkpoint_mgr = CheckpointManager(CHECKPOINT_FILE)
 
-    # Data Loading
+    # Data loading
     if CHECKPOINT_ID == 0:
         if LOAD_CHECKPOINT and checkpoint_mgr.exists():
+            # Load data from pickle file
             all_data = checkpoint_mgr.load()
         elif CHECKPOINT_ID == 0:
-            # If no checkpoint
+            # Load data from raw
             all_data = load_all_participants()
             if SAVE_CHECKPOINT:
                 checkpoint_mgr.save(all_data)
