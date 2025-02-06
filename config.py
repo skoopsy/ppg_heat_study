@@ -14,8 +14,8 @@ SENSOR_TYPES= {
 CONDITIONS = ["pre_heat_exposure", "intra_heat_exposure", "post_heat_exposure"]
 
 # For checkpointing
-LOAD_CHECKPOINT = False
-SAVE_CHECKPOINT = True
+LOAD_CHECKPOINT = True
+SAVE_CHECKPOINT = False
 CHECKPOINT_FILE = "data/pickled/ID00_loaded_data_000.pkl"
 CHECKPOINT_ID = 0
 
