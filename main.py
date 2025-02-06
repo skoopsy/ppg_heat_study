@@ -15,12 +15,12 @@ def main():
         if LOAD_CHECKPOINT and checkpoint_mgr.exists():
             # Load data from pickle file
             all_data = checkpoint_mgr.load()
-        elif CHECKPOINT_ID == 0:
+        elif CHECKPOINT_ID == 0 and LOAD_CHECKPOINT == False:
             # Load data from raw
             all_data = load_all_participants()
             if SAVE_CHECKPOINT:
                 checkpoint_mgr.save(all_data)
-    
+        
     breakpoint()    
     merged_data = {
         participant: {cat: merge_data(all_data[participant], cat) for cat in all_data[participant]}

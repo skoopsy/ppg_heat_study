@@ -23,6 +23,12 @@ class CheckpointManager:
         Args:
             data: Object to be pickled
         """
+        # mkdir if doesnt exist
+        directory = os.path.dirname(self.filename)
+        if directory and not os.path.exists(directory):
+            os.makedirs(directory, exist_ok=True)
+
+        # Save data
         with open(self.filename, "wb") as f:
             pickle.dump(data, f)
         print(f"Checkpoint saved: {self.filename}")
