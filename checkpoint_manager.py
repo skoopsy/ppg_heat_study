@@ -34,7 +34,7 @@ class CheckpointManager:
         Returns:
             Unpickled data object
         """
-        if not os.path.exist(self.filename):
+        if not os.path.exists(self.filename):
             raise FileNotFoundError(f"Checkpoint file {self.filename} not found.")
         with open(self.filename,"rb") as f:
             data = pickle.load(f)

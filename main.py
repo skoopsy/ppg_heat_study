@@ -1,8 +1,25 @@
+import os
+
+from config import LOAD_CHECKPOINT, SAVE_CHECKPOINT, CHECKPOINT_ID,  CHECKPOINT_FILE
 from loader import load_all_participants
+from checkpoint_manager import CheckpointManager
 from preprocessor import merge_data, compute_sample_rate_for_sensor
 from visualiser import visualise_data_availability, plot_data_coverage_per_participant, plot_individual_participant_heatmap, visualise_ppg_ch0_minutes_stacked
+
 def main():
-    all_data = load_all_participants()
+
+    checkpoint_mgr = CheckpointManager(CHECKPOINT_FILE)
+
+    # Data Loading
+    if CHECKPOINT_ID == 0:
+        if LOAD_CHECKPOINT and checkpoint_mgr.exists():
+            all_data = checkpoint_mgr.load()
+        elif CHECKPOINT_ID == 0:
+            # If no checkpoint
+            all_data = load_all_participants()
+            if SAVE_CHECKPOINT:
+                checkpoint_mgr.save(all_data)
+    
     breakpoint()    
     merged_data = {
         participant: {cat: merge_data(all_data[participant], cat) for cat in all_data[participant]}
