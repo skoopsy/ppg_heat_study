@@ -16,6 +16,7 @@ CONDITIONS = ["pre_heat_exposure", "intra_heat_exposure", "post_heat_exposure"]
 # For checkpointing
 USE_CHECKPOINT = False
 CHECKPOINT_NAME = "processed_data.pkl"
+CHECKPOINT_ID = 0
 
 # Function to get participant directories
 def get_participant_dirs():
